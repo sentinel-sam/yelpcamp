@@ -1,0 +1,24 @@
+Error Handling
+
+chicken.fly() //Error //"chicken is undefined" + trace error
+throw new Error("Error") //"error" + trace error
+//express with throw a default html page error
+
+//custom error handler, both error will hit our custom error handler below
+app.use((err, req, res, next) => {
+    console.log(err)
+    next(err) // pass to the next error handling middleware//next()
+})
+
+development
+
+production
+
+find how to print the session ish to console
+
+How to run in production
+>>>>>>NODE_ENV=production node app.js
+
+mongo sanitize remove special characters
+mongo injection, querying the db
+xss making your script run on someone else website
