@@ -28,6 +28,8 @@ module.exports.createCampground = async (req, res, next) => {
     res.redirect(`/campgrounds/${campground._id}`)
 }
 module.exports.showCampground = async (req, res) => {
+    let currentTime = new Date();
+
     const campground = await Campground.findById(req.params.id).populate({
         path: 'reviews',
         populate: {
@@ -39,7 +41,7 @@ module.exports.showCampground = async (req, res) => {
         req.flash('error', 'Cannot find that Campground');
         return res.redirect('/campgrounds');
     }
-    res.render('campgrounds/show', { campground });
+    res.render('campgrounds/show', { campground, currentTime });
 }
 module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
